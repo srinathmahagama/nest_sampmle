@@ -3,6 +3,8 @@ import { JwtService } from '@nestjs/jwt';
 import { User, UserDocument } from 'src/user/schemas/user.schema';
 import { UserService } from 'src/user/user.service';
 import { jwtSecret } from './constants';
+import * as bcrypt from 'bcrypt';
+
 
 @Injectable()
 export class AuthService {
@@ -17,7 +19,8 @@ export class AuthService {
                 return null;
             }
     
-            const passwordIsValid = password === user.password;
+            //const encryptedPassword = bcrypt.compareSync(password,0);
+            const passwordIsValid = bcrypt.compareSync(password, user.password)
             return passwordIsValid ? user : null;
         }
     

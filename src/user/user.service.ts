@@ -45,7 +45,7 @@ export class UserService {
         const user: User = {
             _id: uuid(),
             email: createUserData.email,
-            password: bcrypt.hashSync(createUserData.password, 0),
+            password: bcrypt.hashSync(createUserData.password, 8),
             active: false,
             confirmationCode: token,
             age: createUserData.age,
@@ -70,7 +70,7 @@ export class UserService {
                 jobType: ''
             }
         }
-        this.notificationClient.sendMail(emailRequest)
+        //this.notificationClient.sendMail(emailRequest)
         return newUser;
     }
 
