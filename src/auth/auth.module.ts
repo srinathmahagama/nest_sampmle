@@ -8,6 +8,7 @@ import { jwtSecret } from './constants';
 import { JwtStrategy } from './stratergies/jwt-stratergy';
 import { LocalStrategy } from './stratergies/local-stratergy';
 import { EmailService } from '../user/email/email.service';
+import { GoogleStrategy } from './stratergies/google-stratergy';
 
 @Module({
   imports: [
@@ -19,6 +20,6 @@ import { EmailService } from '../user/email/email.service';
     })
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, LocalStrategy],
+  providers: [AuthService, JwtStrategy, LocalStrategy, GoogleStrategy],
 })
 export class AuthModule {}
